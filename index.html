@@ -17,9 +17,17 @@
 <!-- The main style sheet -->
 <link rel="stylesheet" type="text/css" href="assets/css/mainstyle.css">
 
+<script src="assets/js/js.cookie.js"></script>
+
+<script>
+	//Global var and arrays
+	var cart = [];
+</script>
 
 </head>
 <body>
+
+<!--*************************************************** -->
 <!-- navbar ***************************** -->
 <div class="container">
 <div class="row ">
@@ -27,8 +35,9 @@
 <!-- nav links -->
 <a class="nav-links nav-links-active" href="">Home</a>
 <a class="nav-links" href="">Contact</a>
+<a class="nav-links" id="cartTotal" name="cartTotal" href=""><i class="fa fa-shopping-cart" aria-hidden="true"></i> (0)</a>
 <!--End nav links -->
-</div>
+</div> <!--Closing col-lg-*.. -->
 </div> <!--Closing row -->
 
 <!-- Cover ****************************** -->
@@ -51,7 +60,7 @@ col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
 </div>
 <!--End Sub title -->
 
-</div>
+</div> <!--Closing col-lg-*.. -->
 </div> <!--Closing row -->
 <!-- Intor ****************************** -->
 <div class="row jumbotron text-center ">
@@ -59,13 +68,16 @@ col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
 <p>Hedom is the best website for the bla bla is the best website for the bla bla is the best website for the bla blais the best website for the bla bla</p>
 </div>
 </div> <!--Closing row -->
+<!--*************************************************** -->
+
+
 
 <!-- Products ****************************** -->
-<!-- products row -->
+<!-- products row **************** -->
 <div class="row  ">
-<div class=" col-lg-offset-1 col-lg-offset-1 col-lg-11 col-md-11 col-sm-offset-1 col-sm-11 col-xs-12">
+<div class=" col-lg-offset-1 col-md-offset-1 col-sm-offset-2 col-lg-11 col-md-11 col-sm-10 col-xs-12">
 
-<!-- product - one **************** -->
+<!-- product - one **** -->
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pro-container
 ">
 <!-- image link-->
@@ -77,10 +89,19 @@ col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
 <!-- product price-->
 <div class="pro-price pull-left">$25</div>
 <!-- cart link-->
-<a href="#" class="pro-cart pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+<a href="#" id='pro1' pro_ID="1" class="pro-cart pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 </div>
-
-<!-- product - two ********** -->
+<script>
+//cart button
+$('#pro1').click(function(event) {
+	event.preventDefault();
+	var productID = $('#pro1').attr('pro_ID');	
+    creatingCookiesCart(cart,productID)
+	
+});	
+</script>
+<!--END product - one **** -->
+<!-- product - two **** -->
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pro-container
 ">
 <!-- image link-->
@@ -92,10 +113,19 @@ col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
 <!-- product price-->
 <div class="pro-price pull-left">$25</div>
 <!-- cart link-->
-<a href="#" class="pro-cart pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+<a href="#" id='pro2' pro_ID="2" class="pro-cart pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 </div>
-
-<!-- product - three *********** -->
+<script>
+//cart button
+$('#pro2').click(function(event) {
+	event.preventDefault();
+	var productID = $('#pro2').attr('pro_ID');	
+    creatingCookiesCart(cart,productID)
+	
+});	
+</script>
+<!--END product - Two **** -->
+<!-- product - three **** -->
 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 pro-container
 ">
 <!-- image link-->
@@ -107,41 +137,158 @@ col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
 <!-- product price-->
 <div class="pro-price pull-left">$25</div>
 <!-- cart link-->
-<a href="#" class="pro-cart pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+<a href="#" id='pro3' pro_ID="3" class="pro-cart pull-right"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 </div>
+<script>
+//cart button
+$('#pro3').click(function(event) {
+	event.preventDefault();
+	var productID = $('#pro3').attr('pro_ID');	
+    creatingCookiesCart(cart,productID)
+	
+});	
+</script>
+<!--END product - three **** -->
 
-
-
-</div>
+</div><!--Closing col-lg-* -->
 </div> <!--Closing row -->
-<!--End products row -->
-
-
-
+<!--End products row **************** -->
 
 <!--End products -->
 
+<!--*************************************************** -->
+
+
+
+
+<!--Info message **************** -->
+<div class="addToCart" id="addToCart">Added To Cart</div>
+
+<!--End Info message **************** -->
+
+
 </div> <!-- closing the container div -->
+<!--*************************************************** -->
+
+
+
+
 <!-- footer ****************************** -->
 <footer>
 <br>
 <br>
+<!-- copy right information -->
 <center>
 <div>
 All rights reserved: © 2017 a4mweb.com
 </div>
 </center>
+<!-- End right information -->
 </footer>
+<!--End  footer ****************************** -->
+
+
 
 
 <script >
-/*
-	$(document).ready(function() {
-$( ".pro-cart" ).click( function() {
-    $(".pro-cart").css({'transform': 'rotate(-180deg)'});
-});
-});
-*/
+//cart script
+ 
+ $(document).ready(function() {
+ 
+ //creating cookies for cart *****
+ var cartCookies = Cookies.get('cart');
+//if cart cookies don't exist, create cookies
+ if (cartCookies == undefined ){
+ 	var arr2 = [];
+ 	var json_str = JSON.stringify(arr2);
+ 	Cookies.set('cart',json_str)
+ 	/*alert(Cookies.getJSON('cart'));*/
+ }
+ //if cart cookies exist, load them to cart array
+else{
+	cart = Cookies.getJSON('cart');
+	/*alert(Cookies.getJSON('cart'));*/
+}
+ //END creating cookies for cart *****
+/*********************************************************/
+ // displaying total items at the cart in the navebar ***** 
+ $('#cartTotal').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i> ('+cart.length+')');
+
+   });
+  // END displaying total items at the cart in the navebar *****
+ /*****************************************************/
+
+//creatin cookies for cart array
+function creatingCookiesCart(array,productID){
+	var counter=0;
+
+	//check if the user added this items before
+for (var i = 0; i < cart.length; i++) {
+	if(cart[i] == productID){
+		counter++;
+		}	
+	}
+
+   // if added the item before
+	if (counter != 0){
+	if(confirm("You have already added this item "+counter+" time(s), do you want to added again?")){
+
+    //adding item to the cart
+	cart.push(productID);
+
+	//creating cookies
+    var json_str = JSON.stringify(array);
+ 	Cookies.set('cart',json_str)
+
+ 	// displaying total items at the cart in the navebar
+    $('#cartTotal').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i> ('+cart.length+')');
+   //Displaying add to cart message
+    $('#addToCart').show('slow/400/fast', function() {
+    	
+     setTimeout(function() {
+     	$('#addToCart').hide('slow/400/fast');	}, 1000);
+    
+    }); 
+    
+  
+    
+
+
+
+
+
+    }
+	}
+
+// if not added the item before
+	else{
+	
+	//adding item to the cart
+	cart.push(productID);
+	
+	//creating cookies
+    var json_str = JSON.stringify(array);
+ 	Cookies.set('cart',json_str)
+ 	
+ 	// displaying total items at the cart in the navebar
+    $('#cartTotal').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i> ('+cart.length+')');
+
+    //Displaying add to cart message
+    $('#addToCart').show('slow/400/fast', function() {
+    	
+     setTimeout(function() {
+     	$('#addToCart').hide('slow/400/fast');	}, 1000);
+    
+    });
+
+
+	}
+     
+	
+	
+
+}
+
 </script>
 
 
