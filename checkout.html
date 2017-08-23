@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online-Store</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- font-awesome library -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<!-- The main style sheet -->
+<link rel="stylesheet" type="text/css" href="assets/css/mainstyle.css">
+
+<script src="assets/js/js.cookie.js"></script>
+
+
+
+</head>
+<script type="text/javascript" src="assets/js/migo_cart.js"></script>
+
+<body>
+
+
+<!--*************************************************** -->
+<!-- navbar ***************************** -->
+<div class="container">
+<div class="row ">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cst-nav-bar">
+<!-- nav links -->
+<a class="nav-links " href="index.html">Home</a>
+<a class="nav-links" href="">Contact</a>
+<a class="nav-links nav-links-active" id="migoCartTotal" name="migoCartTotal" href="checkout.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> (0)</a>
+<!--End nav links -->
+</div> <!--Closing col-lg-*.. -->
+</div> <!--Closing row -->
+
+<!-- Cover ****************************** -->
+
+<div class="row  ">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 head-cover">
+
+<!-- Title -->
+<div  class="col-lg-4 col-md-4 col-lg-offset-4 col-md-offset-4    
+col-sm-4 col-sm-offset-4 col-xs-6  title-a" >
+<div class="">THIS IS HEDOM SHOP
+</div>
+</div>
+<!--End title -->
+
+<!-- Sub title -->
+<div class="col-lg-6   col-lg-offset-3  col-md-6 col-md-offset-3    
+col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
+<div class="">The best collection of whatever haha clothes ever!</div>
+</div>
+<!--End Sub title -->
+
+</div> <!--Closing col-lg-*.. -->
+</div> <!--Closing row -->
+<!-- Intor ****************************** -->
+<div class="row jumbotron text-center ">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<p>Hedom is the best website for the bla bla is the best website for the bla bla is the best website for the bla blais the best website for the bla bla</p>
+</div>
+</div> <!--Closing row -->
+<!--*************************************************** -->
+
+
+
+<!-- Items ****************************** -->
+<!-- Items row **************** -->
+<div class="row  ">
+<div class=" col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-11 col-md-11 col-sm-10 col-xs-12">
+
+<!-- Items Table **** -->
+<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 pro-container-page
+">
+
+<div class="table-responsive">
+<table class="table table-hover ">
+    <thead>
+      <tr>
+        <th>Items</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Quant.</th>
+        <th>price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="tableData">
+      
+    </tbody>
+  </table>
+<button class="btn btn-success">Buy Now</button>
+
+</div>
+</div>
+<!-- End Items Table **** -->
+
+
+
+
+</div><!--Closing col-lg-* -->
+</div> <!--Closing row -->
+<!--End Items row **************** -->
+
+<!--End Items -->
+
+<!--*************************************************** -->
+
+
+
+
+<!--Info message **************** -->
+<div class="addToCart" id="migoAddedToCart">Added To Cart</div>
+
+<!--End Info message **************** -->
+
+
+</div> <!-- closing the container div -->
+<!--*************************************************** -->
+
+
+
+
+<!-- footer ****************************** -->
+<footer>
+<br>
+<br>
+<!-- copy right information -->
+<center>
+<div>
+All rights reserved: © 2017 a4mweb.com
+</div>
+</center>
+<!-- End right information -->
+</footer>
+<!--End  footer ****************************** -->
+
+
+
+
+<script >
+//cart script
+ 
+ $(document).ready(function() {
+
+ //creating or loading cookies
+ migoCheckCookies();
+/***********************************/
+ //adding tabe to item table
+
+ for (var i = 0; i < migo_cart.length; i++) {
+   $('#tableData').append('<tr id="'+i+'"><td >'+migo_cart[i]['pro_name']+'</td><td>'+migo_cart[i]['size']+'</td><td>'+migo_cart[i]['color']+'</td><td>'+migo_cart[i]['quantity']+'</td><td>'+migo_cart[i]['total_pay']+'</td><td><button class="btn" data-id="'+i+'">X</button></td></tr>');
+   
+ }
+
+/**********************************/
+ //removing an item for the cart
+ $("button").click(function() {
+  //revoming the <tr>
+  var id = $(this).data('id');
+  $("#" + id).remove();
+ 
+  //removing the item form the cart
+  migo_cart.splice(id,1);
+  //alert(migo_cart.length);
+
+  //adding the cart without the removed item
+  var json_str = JSON.stringify(migo_cart);
+  Cookies.set('migo_cart',json_str,{ expires: 7 });
+  //displaying the cart items number on the navbar
+  $('#migoCartTotal').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i> ('+migo_cart.length+')');
+  
+});
+ /*******************************/
+   });
+ 
+</script>
+
+
+</body>
+</html>

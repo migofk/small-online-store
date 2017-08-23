@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online-Store</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- font-awesome library -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<!-- The main style sheet -->
+<link rel="stylesheet" type="text/css" href="assets/css/mainstyle.css">
+
+<script src="assets/js/js.cookie.js"></script>
+
+
+
+</head>
+<script type="text/javascript" src="assets/js/migo_cart.js"></script>
+
+<body>
+
+
+<!--*************************************************** -->
+<!-- navbar ***************************** -->
+<div class="container">
+<div class="row ">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 cst-nav-bar">
+<!-- nav links -->
+<a class="nav-links " href="index.html">Home</a>
+<a class="nav-links" href="">Contact</a>
+<a class="nav-links" id="migoCartTotal" name="migoCartTotal" href="checkout.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> (0)</a>
+<!--End nav links -->
+</div> <!--Closing col-lg-*.. -->
+</div> <!--Closing row -->
+
+<!-- Cover ****************************** -->
+
+<div class="row  ">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 head-cover">
+
+<!-- Title -->
+<div  class="col-lg-4 col-md-4 col-lg-offset-4 col-md-offset-4    
+col-sm-4 col-sm-offset-4 col-xs-6  title-a" >
+<div class="">THIS IS HEDOM SHOP
+</div>
+</div>
+<!--End title -->
+
+<!-- Sub title -->
+<div class="col-lg-6   col-lg-offset-3  col-md-6 col-md-offset-3    
+col-sm-6 col-sm-offset-3 col-xs-8  sub-title-a" >
+<div class="">The best collection of whatever haha clothes ever!</div>
+</div>
+<!--End Sub title -->
+
+</div> <!--Closing col-lg-*.. -->
+</div> <!--Closing row -->
+<!-- Intor ****************************** -->
+<div class="row jumbotron text-center ">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<p>Hedom is the best website for the bla bla is the best website for the bla bla is the best website for the bla blais the best website for the bla bla</p>
+</div>
+</div> <!--Closing row -->
+<!--*************************************************** -->
+
+
+
+<!-- Products ****************************** -->
+<!-- products row **************** -->
+<div class="row  ">
+<div class=" col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-11 col-md-11 col-sm-10 col-xs-12">
+
+<!-- product - picture **** -->
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pro-container-page
+">
+<!-- image link-->
+
+<img class="pro-image-page"  src="images\560 (1).jpg">
+
+</div>
+
+<!--END product - one **** -->
+<!-- product Detail **** -->
+<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 pro-container-page
+">
+
+
+<!-- product name-->
+<h3 class="pro-name-page" >Deadpool T-shirt</h3>
+<!-- product price-->
+<div class="pro-price ">$25.00</div>
+<br>
+<!-- Details-->
+<h4 class="pro-details"> Details:</h4>
+<ul class="pro-details-list">
+	<li>Cotton & cool</li>
+	<li>Horizontal in 5 by 6</li>
+	<li>The cool kid at school</li>
+	<li>I love you dude</li>
+</ul>
+<br>
+<!-- form for picking size and color-->
+<form class="form-horizontal">
+  <fieldset>
+  
+  <!-- picking quantity-->
+<div class="form-group">
+      <label for="quantity" class="col-lg-3 control-label">Quantity </label>
+      <div class="col-lg-9">
+        <select class="form-control" id="quantity" name="quantity">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          
+        </select>
+      
+      </div>
+    </div>
+  <!-- picking size-->
+<div class="form-group" id="myForm">
+      <label for="size" class="col-lg-3 control-label">Size</label>
+      <div class="col-lg-9">
+        <select class="form-control" id="size" name="size">
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="XXL">XXL</option>
+          <option value="XXXL">XXXL</option>
+          
+        </select>
+      
+      </div>
+    </div>
+  <!-- picking color-->
+  <div class="form-group">
+      <label for="color" class="col-lg-3 control-label">Color</label>
+      <div class="col-lg-9">
+        <select class="form-control" id="color" name="color">
+          <option value="Red">Red</option>
+          <option value="White">White</option>
+          <option value="Black">Black</option>
+        
+        </select>
+      
+      </div>
+    </div>
+<!-- total price-->
+
+    <div class="form-group">
+      <label for="total_pay" class="col-lg-3 control-label">Total</label>
+      <div class="col-lg-9"> 
+      <input disabled=""  class="form-control" id="total_pay" name="total_pay"/ value="25">
+    
+       </div>
+    </div>
+     </fieldset>
+</form>
+<!-- cart button-->
+<button id='pro2' pro_ID="2" pro_name="Deadpool T-shirt" pro_price="25" class="btn btn-success pro-cart-page "> Add To Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+</div>
+<script>
+
+//getting data form customer 
+$('#quantity').change(function() {
+	migo_quantity =$('#quantity').val();
+	var proPrice = $('#pro2').attr('pro_price');
+	var total_price = migo_quantity*proPrice;
+	$('#total_pay').val(total_price);
+	
+});
+$('#size').change(function() {
+	migo_size= $('#size').val();
+
+});
+$('#color').change(function() {
+	migo_color= $('#color').val();
+});
+/*****************************/
+//cart button
+$('#pro2').click(function(event) {
+	event.preventDefault();
+	var productID = $('#pro2').attr('pro_ID');
+	var pro_name = $('#pro2').attr('pro_name');
+	var total_pay = $('#total_pay').val();
+	addtoMigoCart(productID,pro_name,total_pay);
+
+
+});	
+</script>
+<!--END product Detail **** -->
+
+
+</div><!--Closing col-lg-* -->
+</div> <!--Closing row -->
+<!--End products row **************** -->
+
+<!--End products -->
+
+<!--*************************************************** -->
+
+
+
+
+<!--Info message **************** -->
+<div class="addToCart" id="migoAddedToCart">Added To Cart</div>
+
+<!--End Info message **************** -->
+
+
+</div> <!-- closing the container div -->
+<!--*************************************************** -->
+
+
+
+
+<!-- footer ****************************** -->
+<footer>
+<br>
+<br>
+<!-- copy right information -->
+<center>
+<div>
+All rights reserved: © 2017 a4mweb.com
+</div>
+</center>
+<!-- End right information -->
+</footer>
+<!--End  footer ****************************** -->
+
+
+
+
+<script >
+//cart script
+ 
+ $(document).ready(function() {
+ 	//the default values of the products
+ migoGlobalVarValues('Black','L',1);
+   //creating or loading cookies
+ migoCheckCookies();
+ 
+   });
+ 
+</script>
+
+
+</body>
+</html>
